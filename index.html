@@ -39,11 +39,11 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: #2F4056"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src class="js-avatar">
+			<img src="https://avatars3.githubusercontent.com/u/26873985?s=400&amp;u=809d3ccff37f2fc239f173c12103738480738e84&amp;v=4" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">RobinYoung10</a></h1>
@@ -54,8 +54,6 @@
 			<ul>
 			
 				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/tags/随笔/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -70,20 +68,16 @@
     			
             
     			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
-    			
             
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/RobinYoung10" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+					<a class="weibo" target="_blank" href="https://weibo.com/u/3179557540?is_all=1" title="weibo"><i class="icon-weibo"></i></a>
 		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+					<a class="mail" target="_blank" href="/839128964@qq.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -94,14 +88,14 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+  	<div class="overlay js-overlay" style="background: #2F4056"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src class="js-avatar">
+				<img src="https://avatars3.githubusercontent.com/u/26873985?s=400&amp;u=809d3ccff37f2fc239f173c12103738480738e84&amp;v=4" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">RobinYoung10</h1>
@@ -111,20 +105,16 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/RobinYoung10" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+						<a class="weibo" target="_blank" href="https://weibo.com/u/3179557540?is_all=1" title="weibo"><i class="icon-weibo"></i></a>
 			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+						<a class="mail" target="_blank" href="/839128964@qq.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -133,9 +123,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -151,6 +139,94 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-apache-shiro-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/21/apache-shiro-1/">Shiro学习（一）</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/21/apache-shiro-1/" class="archive-article-date">
+  	<time datetime="2019-05-21T15:01:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="第一个Shiro程序"><a href="#第一个Shiro程序" class="headerlink" title="第一个Shiro程序"></a>第一个Shiro程序</h3><p>第一步，添加maven依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- shiro --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.shiro<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>shiro-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- log --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.17<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>第二步，配置shiro.ini文件，放在src/main/resources目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># =============================================================================</span><br><span class="line"># Tutorial INI configuration</span><br><span class="line">#</span><br><span class="line"># Usernames/passwords are based on the classic Mel Brooks&apos; film &quot;Spaceballs&quot; :)</span><br><span class="line"># =============================================================================</span><br><span class="line"></span><br><span class="line"># -----------------------------------------------------------------------------</span><br><span class="line"># Users and their (optional) assigned roles</span><br><span class="line"># username = password, role1, role2, ..., roleN</span><br><span class="line"># -----------------------------------------------------------------------------</span><br><span class="line">[users]</span><br><span class="line">root = secret, admin</span><br><span class="line">guest = guest, guest</span><br><span class="line">presidentskroob = 12345, president</span><br><span class="line">darkhelmet = ludicrousspeed, darklord, schwartz</span><br><span class="line">lonestarr = vespa, goodguy, schwartz</span><br><span class="line"></span><br><span class="line"># -----------------------------------------------------------------------------</span><br><span class="line"># Roles with assigned permissions</span><br><span class="line"># roleName = perm1, perm2, ..., permN</span><br><span class="line"># -----------------------------------------------------------------------------</span><br><span class="line">[roles]</span><br><span class="line">admin = *</span><br><span class="line">schwartz = lightsaber:*</span><br><span class="line">goodguy = winnebago:drive:eagle5</span><br></pre></td></tr></table></figure>
+<p>第三步，在java代码中引入配置，获取SecurityManager对象，并设置到SecurityUtils中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.通过shiro配置文件获取配置并创建factory</span></span><br><span class="line">Factory&lt;SecurityManager&gt; factory = <span class="keyword">new</span> IniSecurityManagerFactory(<span class="string">"classpath:shiro-jdbc-realm.ini"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//2.获取SecurityManager对象</span></span><br><span class="line">SecurityManager securityManager = factory.getInstance();</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.</span></span><br><span class="line">SecurityUtils.setSecurityManager(securityManager);</span><br></pre></td></tr></table></figure>
+<p>第四步，获取当前正在执行的用户：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Subject currentUser = SecurityUtils.getSubject();</span><br></pre></td></tr></table></figure>
+<p>使用 SecurityUtils.getSubject()，我们可以获得当前正在执行的 Subject。Subject 是一个安全术语，它基本上的意思是<br>“当前正在执行的用户的特定的安全视图”。这个Subject可以获得会话：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Session session = currentUser.getSession();</span><br><span class="line"></span><br><span class="line">session.setAttribute(<span class="string">"someKey"</span>, <span class="string">"aValue"</span>);</span><br></pre></td></tr></table></figure>
+<p>这个Session是Shiro的特定实例，它提供了大部分你经常与 HttpSessoins 使用的东西，除了一些额外的好处以及一个巨大的区别：它不需要一个 HTTP 环境！</p>
+<p>第五步，让当前用户执行登录：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!currentUser.isAuthenticated()) &#123;</span><br><span class="line">    UsernamePasswordToken token = <span class="keyword">new</span> UsernamePasswordToken(<span class="string">"zhang"</span>, <span class="string">"123"</span>);</span><br><span class="line">    token.setRememberMe(<span class="keyword">true</span>);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        currentUser.login(token);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (UnknownAccountException uae) &#123;</span><br><span class="line">        System.out.println(<span class="string">"用户名不存在"</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IncorrectCredentialsException ice) &#123;</span><br><span class="line">        System.out.println(<span class="string">"密码错误"</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (LockedAccountException lae) &#123;</span><br><span class="line">        System.out.println(<span class="string">"帐户的用户名被锁定-不能登录"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>判断当前用户是否市已登录状态，不是的话设置UsernamePasswordToken，使用这个token进行登录，如果登录失败，可以捕获特定的异常来告诉你登录失败原因。</p>
+<p>最后，你可以执行注销操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">currentUser.logout();</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Apache Shiro</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/21/apache-shiro-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-java-reflex" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1046,104 +1122,9 @@
 
 
   
-    <article id="post-mysql-note1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/27/mysql-note1/">MySQL学习笔记（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/27/mysql-note1/" class="archive-article-date">
-  	<time datetime="2019-04-27T10:16:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一、连接查询"><a href="#一、连接查询" class="headerlink" title="一、连接查询"></a>一、连接查询</h3><p>连接查询可以实现多个表查询，当查询数据时，通过连接操作查询出存放在多个表中的不同实体信息。</p>
-<h5 id="1-内连接查询"><a href="#1-内连接查询" class="headerlink" title="1.内连接查询"></a>1.内连接查询</h5><p>内连接查询（INNER JOIN）使用比较运算符进行表间某些列数据的比较操作，并列出这些表中与连接条件相匹配的数据行，组合成新纪录。有两个表<code>tb_sjxx</code>和<code>tb_cpxx</code>，表结构如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; desc tb_sjxx;</span><br><span class="line">+-------+-------------+------+-----+---------+-------+</span><br><span class="line">| Field | Type        | Null | Key | Default | Extra |</span><br><span class="line">+-------+-------------+------+-----+---------+-------+</span><br><span class="line">| sjbh  | varchar(20) | NO   | PRI | NULL    |       |</span><br><span class="line">| zh    | varchar(20) | NO   |     | NULL    |       |</span><br><span class="line">| mm    | varchar(20) | NO   |     | NULL    |       |</span><br><span class="line">| sjmc  | varchar(20) | YES  |     | NULL    |       |</span><br><span class="line">| dh    | varchar(20) | YES  |     | NULL    |       |</span><br><span class="line">| yysj  | varchar(20) | YES  |     | NULL    |       |</span><br><span class="line">| ctjj  | varchar(50) | YES  |     | NULL    |       |</span><br><span class="line">+-------+-------------+------+-----+---------+-------+</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; desc tb_cpxx;</span><br><span class="line">+-------+--------------+------+-----+---------+-------+</span><br><span class="line">| Field | Type         | Null | Key | Default | Extra |</span><br><span class="line">+-------+--------------+------+-----+---------+-------+</span><br><span class="line">| sjbh  | varchar(20)  | NO   |     | NULL    |       |</span><br><span class="line">| cpbh  | varchar(30)  | NO   | PRI | NULL    |       |</span><br><span class="line">| lx    | int(11)      | YES  |     | NULL    |       |</span><br><span class="line">| mc    | varchar(20)  | YES  |     | NULL    |       |</span><br><span class="line">| ms    | varchar(50)  | YES  |     | NULL    |       |</span><br><span class="line">| tp    | varchar(200) | YES  |     | NULL    |       |</span><br><span class="line">| jg    | double       | YES  |     | NULL    |       |</span><br><span class="line">| ls    | varchar(30)  | YES  |     | NULL    |       |</span><br><span class="line">+-------+--------------+------+-----+---------+-------+</span><br></pre></td></tr></table></figure>
-<p>两个表有相同数据类型的字段sjbh，通过这个字段建立联系，我们输入如下内连接查询语句，on后面就是查询的条件：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tb_sjxx.sjbh, tb_sjxx.sjmc, tb_cpxx.mc <span class="keyword">from</span> tb_sjxx <span class="keyword">inner</span> <span class="keyword">join</span> tb_cpxx <span class="keyword">on</span> tb_sjxx.sjbh = tb_cpxx.sjbh;</span><br></pre></td></tr></table></figure>
-<p>查询结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+---------------+-------------------+--------------------------+</span><br><span class="line">| sjbh          | sjmc              | mc                       |</span><br><span class="line">+---------------+-------------------+--------------------------+</span><br><span class="line">| sj20190302001 | 商家1             | 给很方便v你现场          |</span><br><span class="line">| sj20190302001 | 商家1             | 二当时法国二万人         |</span><br><span class="line">| sj20190302001 | 商家1             | 去微软222                |</span><br><span class="line">| sj20190302001 | 商家1             | 的发生士大夫             |</span><br><span class="line">| sj20190305001 | 26服务器测试      | 烧烤类                   |</span><br><span class="line">| sj20190305001 | 26服务器测试      | 粉类                     |</span><br><span class="line">| sj20190305001 | 26服务器测试      | 粥类                     |</span><br></pre></td></tr></table></figure>
-<h5 id="2-外连接查询"><a href="#2-外连接查询" class="headerlink" title="2.外连接查询"></a>2.外连接查询</h5><p>内连接时，返回的查询结果仅仅只是符合查询条件和连接条件的行。但是有的时候需要包含没有关联的行中数据，即返回查询结果集合中不仅包含符合连接条件的行，而且还包括左表（左连接）、右表（右连接）或两个连接表（全外连接）中的所有数据行。</p>
-<ul>
-<li>左连接：返回包括左表中的所有记录和右表中连接字段相等的记录。</li>
-<li>右连接：返回包括右表中的所有记录和左表中连接字段相等的记录。</li>
-</ul>
-<h6 id="左连接"><a href="#左连接" class="headerlink" title="左连接"></a>左连接</h6><p>左连接的结果包括LEFT OUTER子句中指定的左表的所有行，而不仅仅是连接列所匹配的行。如果左表的某行在右表中没有匹配行，则在相关联的结果行中，右表的所有选择列表列均为空值。</p>
-<p>输入如下左连接查询语句：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tb_sjxx.sjbh, tb_cpxx.mc <span class="keyword">from</span> tb_sjxx <span class="keyword">left</span> <span class="keyword">outer</span> <span class="keyword">join</span> tb_cpxx <span class="keyword">on</span> tb_sjxx.sjbh = tb_cpxx.sjbh;</span><br></pre></td></tr></table></figure>
-<p>结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">+---------------+--------------------------+</span><br><span class="line">| sjbh          | mc                       |</span><br><span class="line">+---------------+--------------------------+</span><br><span class="line">| sj20190302001 | sda撒地方                |</span><br><span class="line">| sj20190302001 | 体育体育                 |</span><br><span class="line">| sj20190302001 | 二二                     |</span><br><span class="line">| sj20190302001 | 的发生士大夫             |</span><br><span class="line">| sj20190302001 | 规范化                   |</span><br><span class="line">| sj20190324001 | 苹果                     |</span><br><span class="line">| sj20190324001 | 大白菜                   |</span><br><span class="line">| sj20190324001 | 红牛                     |</span><br><span class="line">| sj20190302002 | NULL                     |</span><br><span class="line">| sj20190302003 | NULL                     |</span><br><span class="line">| sj20190302004 | NULL                     |</span><br><span class="line">| sj20190302005 | NULL                     |</span><br><span class="line">| sj20190423001 | NULL                     |</span><br><span class="line">+---------------+--------------------------+</span><br></pre></td></tr></table></figure>
-<p>可以看到，左连接语句里的左表tb_sjxx里所有的sjbh数据都查询出来了，而tb_cpxx里不一定全部都有对应的数据，所以出现了mc为NULL的数据。</p>
-<h6 id="右连接"><a href="#右连接" class="headerlink" title="右连接"></a>右连接</h6><p>右连接就是左连接的反向连接，返回右表的所有行。如下：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tb_cpxx.mc, tb_sjxx.sjbh <span class="keyword">from</span> tb_cpxx <span class="keyword">right</span> <span class="keyword">outer</span> <span class="keyword">join</span> tb_sjxx <span class="keyword">on</span> tb_sjxx.sjbh = tb_cpxx.sjbh;</span><br></pre></td></tr></table></figure>
-<p>我们将查询的表和数据顺序都调换了一下，结果和上面差不多：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">+--------------------------+---------------+</span><br><span class="line">| mc                       | sjbh          |</span><br><span class="line">+--------------------------+---------------+</span><br><span class="line">| sda撒地方                | sj20190302001 |</span><br><span class="line">| 体育体育                 | sj20190302001 |</span><br><span class="line">| 二二                     | sj20190302001 |</span><br><span class="line">| 的发生士大夫             | sj20190302001 |</span><br><span class="line">| 规范化                   | sj20190302001 |</span><br><span class="line">| 苹果                     | sj20190324001 |</span><br><span class="line">| 大白菜                   | sj20190324001 |</span><br><span class="line">| 红牛                     | sj20190324001 |</span><br><span class="line">| NULL                     | sj20190302002 |</span><br><span class="line">| NULL                     | sj20190302003 |</span><br><span class="line">| NULL                     | sj20190302004 |</span><br><span class="line">| NULL                     | sj20190302005 |</span><br><span class="line">| NULL                     | sj20190423001 |</span><br><span class="line">+--------------------------+---------------+</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/27/mysql-note1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1200,8 +1181,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
-      
-      
     
     
 
@@ -1209,15 +1188,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
       
         
-      
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -1243,6 +1220,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">English</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Apache Shiro</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1326,27 +1307,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
+              <a href="https://github.com/RobinYoung10" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>我的github</a>
             </li>
           
         </ul>
@@ -1354,12 +1315,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     	</section>
     
 
-    
-    	<section class="tools-section tools-section-me" q-show="aboutme">
-  	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
-  	  	
-    	</section>
     
   </div>
   
