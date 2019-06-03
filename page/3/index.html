@@ -140,6 +140,133 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-java-multithreading1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/29/java-multithreading1/">Java多线程学习（一）</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/29/java-multithreading1/" class="archive-article-date">
+  	<time datetime="2019-03-29T11:24:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文参考高红岩著的Java多线程编程核心技术</p>
+<h3 id="一、进程与线程的概念"><a href="#一、进程与线程的概念" class="headerlink" title="一、进程与线程的概念"></a>一、进程与线程的概念</h3><p>进程：进程是操作系统结构的基础，是一次程序的执行，它是系统进行资源分配和调度的一个独立单位，是受操作系统管理的基本运行单元。简单点理解，它就是“Windows任务管理器”中的列表的程序，运行再内存中的exe文件就可以理解为进程。</p>
+<p>线程：线程可以理解为再进程中独立运行的子任务。比如一个浏览器时打开的多个标签页，每一个标签页都是一个子任务，都可以独立的运行一些操作。</p>
+<hr>
+<h3 id="二、使用多线程"><a href="#二、使用多线程" class="headerlink" title="二、使用多线程"></a>二、使用多线程</h3><p>实现多线程的方式主要有两种：一种时继承Thread类，另一种时实现Runnable接口。</p>
+<h5 id="1-继承Thread类"><a href="#1-继承Thread类" class="headerlink" title="1.继承Thread类"></a>1.继承Thread类</h5><p>首先来看Thread类的源码结构，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Thread</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span></span><br></pre></td></tr></table></figure>
+<p>可以看出，其实Thread类实现了Runnable接口，它们之间具有多态关系。</p>
+<p>我们来看简单的实现多线程方法，只要创建的类继承Thread，并重写run方法，再run方法中写线程执行的任务代码，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mythread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.run();</span><br><span class="line">        System.out.println(<span class="string">"Mythread"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行线程，即新建Mythread对象，并执行start方法，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Run</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Mythread mythread = <span class="keyword">new</span> Mythread();</span><br><span class="line">        mythread.start();</span><br><span class="line">        System.out.println(<span class="string">"end"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再运行多线程时，运行的结果与代码执行顺序或调用顺序无关，上面的运行类中“Mythread”和“end”输出的顺序是随机性的。</p>
+<h5 id="2-实现Runnable接口"><a href="#2-实现Runnable接口" class="headerlink" title="2.实现Runnable接口"></a>2.实现Runnable接口</h5><p>因为Java不支持多继承，所以如果创建的线程类已经有父类了，就需要实现Runnable接口。代码跟上面大同小异：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"MyRunnable"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用这个线程类需要用到Thread的构造函数，传入MyRunnable对象，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRunnableTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Runnable runnable = <span class="keyword">new</span> MyRunnable();</span><br><span class="line">        Thread thread = <span class="keyword">new</span> Thread(runnable);</span><br><span class="line">        thread.start();</span><br><span class="line">        System.out.println(<span class="string">"运行结束"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，如上文所说，Java的Thread类也实现了Runnable接口，所以Thread的构造函数还可以传入一个Thread类的对象，这样做就可以将一个Thread对象中的run()方法交由其他的线程调用。</p>
+<h5 id="3-实例变量与线程安全"><a href="#3-实例变量与线程安全" class="headerlink" title="3.实例变量与线程安全"></a>3.实例变量与线程安全</h5><p>自定义线程类中的实例变量对于其他线程有共享和不共享之分。</p>
+<p>不共享变量数据的情况下每个线程维护着自己的变量，其他线程不能访问，如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mythread4</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Mythread4</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        <span class="keyword">this</span>.setName(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.run();</span><br><span class="line">        <span class="keyword">for</span>(;count &gt; <span class="number">0</span>; count--) &#123;</span><br><span class="line">            System.out.println(<span class="string">"由"</span> + <span class="keyword">this</span>.currentThread().getName() + <span class="string">"计算，count="</span> + count);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行类如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Run4</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Mythread4 a = <span class="keyword">new</span> Mythread4(<span class="string">"a"</span>);</span><br><span class="line">        Mythread4 b = <span class="keyword">new</span> Mythread4(<span class="string">"b"</span>);</span><br><span class="line">        Mythread4 c = <span class="keyword">new</span> Mythread4(<span class="string">"c"</span>);</span><br><span class="line">        a.start();</span><br><span class="line">        b.start();</span><br><span class="line">        c.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果将会是每一个线程分别计算5次并输出，顺序随机。</p>
+<p>共享变量数据需要用到上文所说的在Thread的构造函数中传入一个Thread类的对象，即在运行类中，只创建一个自定义线程类，把这个线程类交由几个不同的基本线程类操作调用，从而实现多个线程对同一个线程变量的共享，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mythread5</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.run();</span><br><span class="line">        <span class="comment">//在此处不要使用上一例的for循环，因为使用同步后一个线程就能循环完，其他线程得不到运行的机会</span></span><br><span class="line">        count--;</span><br><span class="line">        System.out.println(<span class="string">"由"</span> + <span class="keyword">this</span>.currentThread().getName() + <span class="string">"计算，count="</span> + count);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行类如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Run5</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Mythread5 mythread = <span class="keyword">new</span> Mythread5();</span><br><span class="line">        Thread a = <span class="keyword">new</span> Thread(mythread, <span class="string">"a"</span>);</span><br><span class="line">        Thread b = <span class="keyword">new</span> Thread(mythread, <span class="string">"b"</span>);</span><br><span class="line">        Thread c = <span class="keyword">new</span> Thread(mythread, <span class="string">"c"</span>);</span><br><span class="line">        Thread d = <span class="keyword">new</span> Thread(mythread, <span class="string">"d"</span>);</span><br><span class="line">        Thread e = <span class="keyword">new</span> Thread(mythread, <span class="string">"e"</span>);</span><br><span class="line">        a.start();</span><br><span class="line">        b.start();</span><br><span class="line">        c.start();</span><br><span class="line">        d.start();</span><br><span class="line">        e.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是这样子处理会出现“非线程安全”问题，即本例中多个线程同时对count进行处理，有可能会出现多个线程输出的count值是相同的。</p>
+<p>修改自定义线程类如下，在run方法前增加synchronized关键字，使得多个线程在执行run方法时，以排队的方式处理。当一个线程调用run之前，先判断run有没有被上锁，如果上锁了，即有其他线程在调用，必须等其他线程调用完后才可以执行：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mythread5</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">synchronized</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.run();</span><br><span class="line">        <span class="comment">//在此处不要使用for循环，因为使用同步后其他线程得不到运行的机会</span></span><br><span class="line">        count--;</span><br><span class="line">        System.out.println(<span class="string">"由"</span> + <span class="keyword">this</span>.currentThread().getName() + <span class="string">"计算，count="</span> + count);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>非线程安全概念：多个线程对同一个对象中的同一个实例变量进行操作时会出现值被更改、值不同步的情况，进而影响程序的执行流程。</p>
+<h5 id="4-一些线程方法"><a href="#4-一些线程方法" class="headerlink" title="4.一些线程方法"></a>4.一些线程方法</h5><ul>
+<li><strong>currentThread()方法</strong></li>
+</ul>
+<p>此方法可返回代码段正在被哪个线程调用的信息。如下代码获取线程的名字：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Thread.currentThread().getName();</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>isAlive()方法</strong></li>
+</ul>
+<p>此方法判断线程当前是否还处于活动状态，返回Boolean值。</p>
+<ul>
+<li><strong>sleep()方法</strong></li>
+</ul>
+<p>此方法作用是在指定的毫秒数内让当前“正在执行的线程”休眠。以下代码示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mythread6</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"run threadName="</span> + <span class="keyword">this</span>.currentThread().getName() + <span class="string">"begin = "</span> + System.currentTimeMillis());</span><br><span class="line">            Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">            System.out.println(<span class="string">"run threadName="</span> + <span class="keyword">this</span>.currentThread().getName() + <span class="string">"end = "</span> + System.currentTimeMillis());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的自定义线程类在start后输出分别输出两个毫秒数，第二个会在线程睡眠2秒后输出。启动类如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Run6</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Mythread6 mythread6 = <span class="keyword">new</span> Mythread6();</span><br><span class="line">        System.out.println(<span class="string">"begin = "</span> + System.currentTimeMillis());</span><br><span class="line">        mythread6.start();</span><br><span class="line">        System.out.println(<span class="string">"end = "</span> + System.currentTimeMillis());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行这个启动类后，由于Mythread6线程是后main线程运行的，所以会先打印main的begin和end输出，后打印Mythread6的begin，2秒后再输出end，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">begin = 1553944198222</span><br><span class="line">end = 1553944198222</span><br><span class="line">run threadName=Thread-0begin = 1553944198222</span><br><span class="line">run threadName=Thread-0end = 1553944200223</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>getId()方法</strong></li>
+</ul>
+<p>getId()方法的作用是取得线程的唯一标识。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">java多线程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/29/java-multithreading1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-java-interview1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -321,11 +448,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Apache Shiro</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -333,11 +460,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">java多线程</a>
+                <a href="javascript:void(0)" class="js-tag color3">Apache Shiro</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">java网络编程</a>
+                <a href="javascript:void(0)" class="js-tag color3">java多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -349,11 +476,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">java网络编程</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">事务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
