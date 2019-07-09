@@ -140,6 +140,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-note-20190707" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/07/note-20190707/">随手记20190707</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/07/note-20190707/" class="archive-article-date">
+  	<time datetime="2019-07-07T12:35:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1、数据库中的集合操作"><a href="#1、数据库中的集合操作" class="headerlink" title="1、数据库中的集合操作"></a>1、数据库中的集合操作</h3><p>集合操作就是将两个或者多个SQL查询结果合并构成复合查询。集合操作符包括：union、union all、intersect（交运算）和minus（差运算）。</p>
+<h5 id="1-union"><a href="#1-union" class="headerlink" title="1.union"></a>1.union</h5><p>union将多个查询结果集相加形成一个结果集，并消除多个结果集中重复的行。</p>
+<p>示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> tb_sjxx <span class="keyword">where</span> zh <span class="keyword">like</span> <span class="string">'sha%'</span> <span class="keyword">and</span> dh <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">null</span> </span><br><span class="line"><span class="keyword">union</span> </span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> tb_sjxx <span class="keyword">where</span> zh = <span class="string">'1'</span> <span class="keyword">and</span> dh <span class="keyword">is</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+<h5 id="2-union-all"><a href="#2-union-all" class="headerlink" title="2.union all"></a>2.union all</h5><p>与union用法相同，只不过不会将多个结果集中重复的行消除。</p>
+<h5 id="3-intersect"><a href="#3-intersect" class="headerlink" title="3.intersect"></a>3.intersect</h5><p>intersect操作符做交集运算。</p>
+<h5 id="4-minus"><a href="#4-minus" class="headerlink" title="4.minus"></a>4.minus</h5><p>minus操作符做差集运算。</p>
+<h3 id="2、TRUNCATE语句"><a href="#2、TRUNCATE语句" class="headerlink" title="2、TRUNCATE语句"></a>2、TRUNCATE语句</h3><p>truncate语句用来删除数据，通常要比delete语句快许多，因为使用truncate语句不会产生回滚信息，因此执行truncate操作不能撤销。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/07/note-20190707/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-MyBatis-Base3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1017,130 +1087,6 @@
 
 
   
-    <article id="post-transaction" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/30/transaction/">数据库事务</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/30/transaction/" class="archive-article-date">
-  	<time datetime="2019-04-30T06:00:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一个运行良好的事务处理系统，必须包含ACID特征，ACID表示原子性(atomicity)、一致性(consistency)、隔离性(isolation)和持久性(durability)。</p>
-<ul>
-<li><strong>原子性</strong>：一个事务必须被视作一个不可分割的最小工作单元，整个事务中的所有操作要么全部提交成功，要么全部失败回滚，不能只执行其中的一部分操作。</li>
-<li><strong>一致性</strong>：数据库总是从一个一致性的状态转换到另一个一致性的状态。在执行事务时，就算里面某一个操作系统崩溃，也不会损失数据，因为事务最终没有提交，所以事务中所作的修改不会保存到数据库中。</li>
-<li><strong>隔离性</strong>：通常来说，一个事务所做的修改在最终提交以前，对其他事务是不可见的。</li>
-<li><strong>持久性</strong>：一旦事务提交，其所做的修改就会永久保存到数据库中。</li>
-</ul>
-<h3 id="并发一致性问题"><a href="#并发一致性问题" class="headerlink" title="并发一致性问题"></a>并发一致性问题</h3><h5 id="1-更新丢失"><a href="#1-更新丢失" class="headerlink" title="1.更新丢失"></a>1.更新丢失</h5><p>T1 和 T2 两个事务都对一个数据进行修改，T1 先修改，T2 随后修改，T2 的修改覆盖了 T1 的修改。</p>
-<h5 id="2-脏读"><a href="#2-脏读" class="headerlink" title="2.脏读"></a>2.脏读</h5><p>事务B读取到事务A已修改未提交的数据，如果事务A撤销了这次修改，则事务B读取到的数据就是脏数据。</p>
-<h5 id="3-不可重复读"><a href="#3-不可重复读" class="headerlink" title="3.不可重复读"></a>3.不可重复读</h5><p>在一个事务内，多次读取同一个数据，在这个事务还没有结束时，另一个事务也访问同一个数据并修改提交，那么第一个事务的两次读到数据不一样。</p>
-<h5 id="4-幻读"><a href="#4-幻读" class="headerlink" title="4.幻读"></a>4.幻读</h5><p>一个事务A按相同的查询条件多次读取数据，却发现事务B插入了满足其查询条件的新数据，这种现象就是幻读。（和可重复读类似，但是幻读是插入和删除，而不可重复读是修改数据）</p>
-<h3 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h3><h5 id="READ-UNCOMMITTED（未提交读）"><a href="#READ-UNCOMMITTED（未提交读）" class="headerlink" title="READ UNCOMMITTED（未提交读）"></a>READ UNCOMMITTED（未提交读）</h5><p>在此级别中，事务中的修改，即使没有提交，对其他事务也都是可见的。事务可以读取未提交的数据，也就是<strong>脏读</strong>（Dirty Read）。这个级别会导致很多问题，在实际应用中很少使用。</p>
-<h5 id="READ-COMMITTED（提交读）"><a href="#READ-COMMITTED（提交读）" class="headerlink" title="READ COMMITTED（提交读）"></a>READ COMMITTED（提交读）</h5><p>大多数数据库系统的默认隔离级别。在此级别中，一个事务开始时，只能看见已经提交的事务所做的修改，这个事务从开始直到提交之前，所做的任何修改对其他事务都是不可见的。这个级别也叫不可重复读，两次执行同样的查询，可能会得到不一样的结果，因为事务读取的时候获得读锁，但是读完后立刻释放，不需要等待事务结束，而写锁则是事务提交后才释放。</p>
-<h5 id="REPEATABLE-READ（可重复读）"><a href="#REPEATABLE-READ（可重复读）" class="headerlink" title="REPEATABLE READ（可重复读）"></a>REPEATABLE READ（可重复读）</h5><p>此隔离级别解决了脏读和不可重复读的问题，所有被读的数据都不能改变。但是无法解决幻读问题。可重复读是MySQL的默认事务隔离级别。</p>
-<h5 id="SERIALIZABLE（可串行化）"><a href="#SERIALIZABLE（可串行化）" class="headerlink" title="SERIALIZABLE（可串行化）"></a>SERIALIZABLE（可串行化）</h5><p>最高隔离级别。他通过强制事务串行执行，所有事务一个接着一个执行，解决了幻读问题。简单来说，会在读取的每一行数据都加锁，可能会导致大量的超时和锁争用问题。</p>
-<table>
-<thead>
-<tr>
-<th>隔离级别</th>
-<th>脏读</th>
-<th>不可重复读</th>
-<th>幻读</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>未提交读</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td>提交读</td>
-<td>×</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td>可重复读</td>
-<td>×</td>
-<td>×</td>
-<td>√</td>
-</tr>
-<tr>
-<td>可串行化</td>
-<td>×</td>
-<td>×</td>
-<td>×</td>
-</tr>
-</tbody>
-</table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">事务</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/30/transaction/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1242,6 +1188,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">java流</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
@@ -1250,15 +1200,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">java流</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">java多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java反射</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1266,11 +1208,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">MySQL、索引</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MySQL、索引</a>
+                <a href="javascript:void(0)" class="js-tag color2">java反射</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">

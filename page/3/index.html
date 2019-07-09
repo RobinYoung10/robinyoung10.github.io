@@ -140,6 +140,136 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JavaSE1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/11/JavaSE1/">JavaSE基础查漏补缺1</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/11/JavaSE1/" class="archive-article-date">
+  	<time datetime="2019-04-11T05:26:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、数据类型"><a href="#一、数据类型" class="headerlink" title="一、数据类型"></a>一、数据类型</h3><h5 id="1-整型"><a href="#1-整型" class="headerlink" title="1.整型"></a>1.整型</h5><p>Java提供了4种整型。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>储存需求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>1字节</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2字节</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4字节</td>
+</tr>
+<tr>
+<td>long</td>
+<td>8字节</td>
+</tr>
+</tbody>
+</table>
+<h5 id="2-浮点类型"><a href="#2-浮点类型" class="headerlink" title="2.浮点类型"></a>2.浮点类型</h5><p>Java提供两种浮点类型。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储需求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>float</td>
+<td>4字节</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8字节</td>
+</tr>
+</tbody>
+</table>
+<p>float类型有效位数为6~7位，double位15位，很多情况下float类型的精度很难满足需求，所以一般程序都采用double类型。float类型的数值有一个后缀F（如3.14F），没有后缀F的浮点数值默认为double类型。double类型浮点数值后面也可以添加后缀D（如3.14D）。</p>
+<h5 id="3-char类型"><a href="#3-char类型" class="headerlink" title="3.char类型"></a>3.char类型</h5><p>char类型占16位，即2字节。</p>
+<h5 id="4-boolean类型"><a href="#4-boolean类型" class="headerlink" title="4.boolean类型"></a>4.boolean类型</h5><p>两个值：false和true。</p>
+<h3 id="二、构建字符串"><a href="#二、构建字符串" class="headerlink" title="二、构建字符串"></a>二、构建字符串</h3><p>众所周知，String类对象是不可变字符串，字符串“Hello”永远是包含H、e、l、l、o的代码单元序列，而不能改变其中任何一个字符。所以，我们一般改变String变量，让其引用另一个字符串的方式。但是这么做在每次链接字符串时，都会构建一个新的String对象，耗时耗空间。而使用StringBuilder类就可避免此问题。如下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder builder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="comment">//添加内容时，调用append方法</span></span><br><span class="line">builder.append(<span class="string">"Hello"</span>);</span><br><span class="line">builder.append(<span class="string">" World!"</span>);</span><br><span class="line"><span class="comment">//调用toString()方法转换位字符串对象</span></span><br><span class="line">String str = builder.toString();</span><br></pre></td></tr></table></figure>
+<h3 id="三、大数值"><a href="#三、大数值" class="headerlink" title="三、大数值"></a>三、大数值</h3><p>如果基本的整数和浮点数精度无法满足需求，那么可以使用java.math包中的两个类：BitInteger和BigDecimal。这两个类可以处理任何长度数字序列的数值。前者是整数，后者是浮点数。</p>
+<p>使用静态的valueOf方法可以将普通的数值转换为大数值：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BigInteger bi = BigInteger.valueOf(<span class="number">100</span>);</span><br></pre></td></tr></table></figure>
+<p>大数值不能使用算术运算符（如：+和*）。而需要使用大数值类中的方法，如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BigInteger c = a.add(b);  <span class="comment">//c = a + b</span></span><br><span class="line">BigInteger c = a.subtract(b);  <span class="comment">//c = a - b</span></span><br><span class="line">BigInteger c = a.multiply(b);  <span class="comment">//c = a * b</span></span><br><span class="line">BigInteger c = a.divide(b);  <span class="comment">//c = a / b</span></span><br></pre></td></tr></table></figure>
+<p>具体查看java文档。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/11/JavaSE1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-java-multithreading2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -655,6 +785,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">java流</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
               </li>
              
@@ -663,15 +797,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">java流</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">java多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java反射</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -679,11 +805,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">MySQL、索引</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MySQL、索引</a>
+                <a href="javascript:void(0)" class="js-tag color2">java反射</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
